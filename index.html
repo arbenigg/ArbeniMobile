@@ -3,44 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArbeniMobile | Ekspertët e Telefonave - Katalogu i Detajuar</title>
+    <title>ArbeniMobile | Ekspertët e Telefonave</title>
     <style>
         /* Apple Style CSS */
         :root {
             --bg-color: #f5f5f7;
             --text-color: #1d1d1f;
-            --link-blue: #0066cc;
+            --link-blue: #0071e3;
+            --link-blue-hover: #0077ed;
             --white: #ffffff;
             --gray: #86868b;
             --border-color: #d2d2d7;
-            --accent-green: #34c759;
+            --success-green: #34c759;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--white);
             color: var(--text-color);
-            line-height: 1.5;
+            line-height: 1.4;
             -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Promo Banner */
         .promo-banner {
             background-color: var(--bg-color);
-            color: var(--text-color);
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-size: 12px;
-            letter-spacing: 0.5px;
+            color: var(--text-color);
             border-bottom: 1px solid var(--border-color);
-            position: relative;
-            z-index: 1001;
         }
 
         /* Navigation */
@@ -55,7 +57,7 @@
         }
 
         .nav-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -64,7 +66,7 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             letter-spacing: -0.5px;
             color: var(--text-color);
@@ -77,278 +79,556 @@
             font-size: 14px;
             margin-left: 30px;
             transition: color 0.3s;
+            opacity: 0.8;
         }
 
         .nav-links a:hover {
+            opacity: 1;
             color: var(--link-blue);
         }
 
-        /* Sections */
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background-color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 26px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background-color: var(--link-blue);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--link-blue-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--link-blue);
+            border: 1px solid var(--link-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--link-blue);
+            color: var(--white);
+        }
+
+        /* Main Sections */
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        .section-bg {
+            background-color: var(--bg-color);
+            max-width: 100%;
+        }
+
         .section-title {
-            font-size: 40px;
+            font-size: 48px;
             font-weight: 600;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             text-align: center;
+            letter-spacing: -0.005em;
         }
 
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+
+        /* Catalog Grid */
         .category-title {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 600;
-            margin-bottom: 30px;
-            margin-top: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
         }
 
-        /* Product Catalog Detailed Grid */
-        .catalog-grid-detailed {
+        .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
+            margin-bottom: 80px;
         }
 
-        .catalog-item-detailed {
+        .product-card {
             background-color: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 30px;
-            text-align: left;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .catalog-item-detailed:hover {
+        .product-card:hover {
             transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
-        .item-image-container {
+        .product-image {
             width: 100%;
-            height: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 200px;
+            object-fit: contain;
             margin-bottom: 20px;
             border-radius: 12px;
-            overflow: hidden;
-            background-color: #fafafa;
         }
 
-        .item-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .product-brand {
+            font-size: 12px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        .item-details {
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            min-height: 50px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 600;
             margin-bottom: 20px;
         }
 
-        .item-category-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--gray);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .item-name-detailed {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .item-description {
-            font-size: 14px;
-            color: var(--gray);
-            margin-bottom: 15px;
-            color: #515154;
-        }
-
-        .item-price-detailed {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        /* Buy Section */
-        .buy-section {
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-            margin-top: auto;
-        }
-
-        .buy-now-btn {
-            background-color: var(--link-blue);
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 16px;
+        .payment-info {
+            font-size: 12px;
+            color: var(--success-green);
+            margin-top: 10px;
             font-weight: 500;
-            display: block;
-            text-align: center;
-            transition: background-color 0.3s;
-            margin-bottom: 15px;
         }
 
-        .buy-now-btn:hover {
-            background-color: #005bb5;
-        }
-
-        .payment-direct-info {
-            font-size: 13px;
-            color: #515154;
-        }
-        
-        .payment-direct-info p {
-            margin-bottom: 5px;
-            display: flex;
+        /* Checkout Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
             align-items: center;
         }
-        
-        .payment-direct-info p span {
-            color: var(--accent-green);
+
+        .modal-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 450px;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+            background: none; border: none;
+        }
+
+        .modal-title {
+            font-size: 24px;
             font-weight: 600;
-            margin-left: 5px;
+            margin-bottom: 10px;
+        }
+
+        .selected-product {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--link-blue);
+        }
+
+        .cod-badge {
+            display: inline-block;
+            background: #e5f9e7;
+            color: #1a7f37;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
         }
 
         /* Footer */
         footer {
             background-color: var(--bg-color);
-            padding: 40px 20px;
-            text-align: center;
-            color: var(--gray);
-            font-size: 12px;
+            padding: 60px 20px;
             border-top: 1px solid var(--border-color);
-            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
         }
     </style>
 </head>
 <body>
 
     <div class="promo-banner">
-        Transport FALAS për porosi mbi 20€. Dërgesa të shpejta në gjithë Kosovën.
+        📦 Transport FALAS kudo në Kosovë për porosi mbi 20€. Bli sot, paguaj në dorëzim!
     </div>
 
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">ArbeniMobile</a>
             <div class="nav-links">
-                <a href="#katalogu">Katalogu Detajuar</a>
+                <a href="#ballina">Ballina</a>
                 <a href="#sherbimet">Shërbimet</a>
-                <a href="#telefona">Telefona</a>
+                <a href="#katalogu">Katalogu</a>
+                <a href="#kontakt">Kontakt</a>
             </div>
         </div>
     </nav>
 
-    <section id="katalogu">
-        <h2 class="section-title">Katalogu i Detajuar i Aksesorëve</h2>
-
-        <h3 class="category-title">Apple Premium Accessories</h3>
-        <div class="catalog-grid-detailed">
-            
-            <div class="catalog-item-detailed">
-                <div class="item-image-container">
-                    <img src="https://arberobotics.com/wp-content/uploads/2022/06/Arbe-Gradient-Logo.png" alt="Apple 35W Dual Port adapter, white, side view" class="item-image">
-                </div>
-                <div class="item-details">
-                    <div class="item-category-label">APPLE</div>
-                    <div class="item-name-detailed">Power Adapter 35W Dual</div>
-                    <div class="item-description">Adapter kompakt me dy porta USB-C, karikon dy pajisje njëkohësisht (p.sh., iPhone dhe Apple Watch).</div>
-                    <div class="item-price-detailed">35.00€</div>
-                </div>
-                <div class="buy-section">
-                    <a href="#" class="buy-now-btn">Blej Tani</a>
-                    <div class="payment-direct-info">
-                        <p>Blerje Direkte:</p>
-                        <p><span>Pagesa cash on delivery</span> (me dërgesë)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="catalog-item-detailed">
-                <div class="item-image-container">
-                    <img src="https://arberobotics.com/wp-content/uploads/2022/06/Arbe-Gradient-Logo.png" alt="Apple Battery Pack attached to phone, white, side view" class="item-image">
-                </div>
-                <div class="item-details">
-                    <div class="item-category-label">APPLE</div>
-                    <div class="item-name-detailed">Battery Pack 5000mAh MagSafe</div>
-                    <div class="item-description">Ngjitet magnetikisht në iPhone 12/13/14/15 për karikim pa tel në lëvizje.</div>
-                    <div class="item-price-detailed">14.99€</div>
-                </div>
-                <div class="buy-section">
-                    <a href="#" class="buy-now-btn">Blej Tani</a>
-                    <div class="payment-direct-info">
-                        <p>Blerje Direkte:</p>
-                        <p><span>Pagesa cash on delivery</span> (me dërgesë)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="catalog-item-detailed">
-                <div class="item-image-container">
-                    <img src="https://arberobotics.com/wp-content/uploads/2022/06/Arbe-Gradient-Logo.png" alt="Apple EarPods Type C, white, side view" class="item-image">
-                </div>
-                <div class="item-details">
-                    <div class="item-category-label">APPLE</div>
-                    <div class="item-name-detailed">EarPods Type C</div>
-                    <div class="item-description">Kufje me tel EarPods me konektor USB-C, për pajisje moderne pa xhek 3.5mm.</div>
-                    <div class="item-price-detailed">19.99€</div>
-                </div>
-                <div class="buy-section">
-                    <a href="#" class="buy-now-btn">Blej Tani</a>
-                    <div class="payment-direct-info">
-                        <p>Blerje Direkte:</p>
-                        <p><span>Pagesa cash on delivery</span> (me dërgesë)</p>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-
-        <h3 class="category-title" style="margin-top: 60px;">Samsung Premium Accessories</h3>
-        <div class="catalog-grid-detailed">
-            
-            <div class="catalog-item-detailed">
-                <div class="item-image-container">
-                    <img src="https://arberobotics.com/wp-content/uploads/2022/06/Arbe-Gradient-Logo.png" alt="Samsung Powerbank 20000mAh, black, side view" class="item-image">
-                </div>
-                <div class="item-details">
-                    <div class="item-category-label">SAMSUNG</div>
-                    <div class="item-name-detailed">Samsung Powerbank 20000mAh 25W</div>
-                    <div class="item-description">Bateri e jashtme me kapacitet të lartë, karikon shpejt pajisje të shumta në 25W.</div>
-                    <div class="item-price-detailed">49.99€</div>
-                </div>
-                <div class="buy-section">
-                    <a href="#" class="buy-now-btn">Blej Tani</a>
-                    <div class="payment-direct-info">
-                        <p>Blerje Direkte:</p>
-                        <p><span>Pagesa cash on delivery</span> (me dërgesë)</p>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-        
+    <section id="ballina" class="hero">
+        <h1>Teknologjia në duart tuaja.</h1>
+        <p>ArbeniMobile është destinacioni juaj premium për blerje telefonash, aksesorë origjinalë dhe servisime profesionale (FRP, iCloud). Çdo gjë që ju nevojitet, në një vend.</p>
+        <div class="hero-buttons">
+            <a href="#katalogu" class="btn">Shiko Katalogun</a>
+            <a href="#sherbimet" class="btn btn-outline">Shërbimet Tona</a>
+        </div>
     </section>
 
-    <footer>
-        <p>ArbeniMobile &copy; 2026. Të gjitha të drejtat të rezervuara.</p>
-        <p style="margin-top: 10px;">Xerxë, Rahovec | Instagram: @arbenimobile</p>
+    <div class="section-bg">
+        <section id="sherbimet">
+            <h2 class="section-title">Ekspertizë e plotë për pajisjen tuaj.</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Servis Profesional</h3>
+                    <p>Riparim i ekraneve, baterive dhe defekteve në pllakë për modele Apple & Samsung me pjesë origjinale.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔓</div>
+                    <h3>FRP & Dekodime</h3>
+                    <p>Hapje e sigurt e llogarive Google (FRP) dhe zhbllokimi i rrjetit nga çdo operator ndërkombëtar.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>iCloud Bypass</h3>
+                    <p>Zgjidhje efikase dhe mbështetje teknike për pajisjet Apple të bllokuara në ekranin e aktivizimit.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Shit-Blerje</h3>
+                    <p>Telefona të rinj dhe të përdorur me garanci. Modelet më të fundit me çmimet më të mira në treg.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="katalogu">
+        <h2 class="section-title">Aksesorët e preferuar.</h2>
+
+        <h3 class="category-title">Apple Premium</h3>
+        <div class="catalog-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=80" alt="Apple 35W" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">Power Adapter 35W Dual USB-C</h4>
+                <p class="product-desc">Karikoni dy pajisje njëkohësisht me shpejtësi maksimale. Origjinal dhe i sigurt.</p>
+                <div class="product-price">35.00€</div>
+                <button class="btn" onclick="openModal('Power Adapter 35W Dual USB-C', '35.00€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e92b?auto=format&fit=crop&w=500&q=80" alt="Apple EarPods" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">EarPods (USB-C & Lightning)</h4>
+                <p class="product-desc">Kualitet i jashtëzakonshëm audio me mikrofon të integruar për thirrje të qarta.</p>
+                <div class="product-price">19.99€</div>
+                <button class="btn" onclick="openModal('EarPods (USB-C/Lightning)', '19.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1615526647209-66dfb3585090?auto=format&fit=crop&w=500&q=80" alt="Apple Cables" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">Kabllo USB-C 2m (240W)</h4>
+                <p class="product-desc">Kabllo super e qëndrueshme e thurur. E përkryer për iPhone 15, iPad dhe Mac.</p>
+                <div class="product-price">24.99€</div>
+                <button class="btn" onclick="openModal('Kabllo USB-C 2m (240W)', '24.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628126235206-5260b9ea6441?auto=format&fit=crop&w=500&q=80" alt="Apple Battery" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">MagSafe Battery Pack</h4>
+                <p class="product-desc">Bateri 5000mAh që ngjitet me magnet. Praktike dhe e lehtë për udhëtime.</p>
+                <div class="product-price">14.99€</div>
+                <button class="btn" onclick="openModal('MagSafe Battery Pack 5000mAh', '14.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+        </div>
+
+        <h3 class="category-title">Samsung Galaxy</h3>
+        <div class="catalog-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=500&q=80" alt="Samsung Adapter" class="product-image">
+                <div class="product-brand">Samsung</div>
+                <h4 class="product-title">Super Fast Charger 25W</h4>
+                <p class="product-desc">Karikues origjinal Samsung për mbushje të shpejtë të serisë Galaxy.</p>
+                <div class="product-price">19.99€</div>
+                <button class="btn" onclick="openModal('Samsung Super Fast Charger 25W', '19.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=500&q=80" alt="Samsung Powerbank" class="product-image">
+                <div class="product-brand">Samsung</div>
+                <h4 class="product-title">Powerbank 20000mAh</h4>
+                <p class="product-desc">Kapacitet masiv për ditët e gjata. Përfshin suport për Super Fast Charging.</p>
+                <div class="product-price">49.99€</div>
+                <button class="btn" onclick="openModal('Samsung Powerbank 20000mAh', '49.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <h3 class="modal-title">Përfundo Porosinë</h3>
+            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Plotësoni të dhënat për dërgesë.</p>
+            
+            <div class="selected-product">
+                <div style="font-weight: 600;" id="modalProductName">Produkti</div>
+                <div style="color: var(--link-blue); font-weight: 600;" id="modalProductPrice">0.00€</div>
+            </div>
+
+            <div class="cod-badge">
+                💵 Mënyra e pagesës: Cash on Delivery (Paguaj te postieri)
+            </div>
+
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>Emri dhe Mbiemri</label>
+                    <input type="text" required placeholder="p.sh. Agim Krasniqi">
+                </div>
+                <div class="form-group">
+                    <label>Numri i Telefonit</label>
+                    <input type="tel" required placeholder="04X XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label>Qyteti dhe Adresa e Plotë</label>
+                    <input type="text" required placeholder="p.sh. Prishtinë, Rr. Agim Ramadani">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Konfirmo Porosinë</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="kontakt">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4 style="font-size: 18px; margin-bottom: 15px;">ArbeniMobile</h4>
+                <p>Besueshmëri, cilësi dhe profesionalizëm. Gjithçka që i duhet telefonit tuaj.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shërbimet</h4>
+                <a href="#sherbimet">Servis & Hardware</a>
+                <a href="#sherbimet">iCloud & FRP</a>
+                <a href="#katalogu">Aksesorë Premium</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt & Adresa</h4>
+                <p>📍 Xerxë, Rahovec, Kosovë</p>
+                <p>📞 +383 4X XXX XXX</p>
+                <p>✉️ info@arbenimobile.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Rrjetet Sociale</h4>
+                <a href="#">Instagram (@arbenimobile)</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ArbeniMobile. Të gjitha të drejtat të rezervuara.</p>
+        </div>
     </footer>
 
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('checkoutModal');
+        const pName = document.getElementById('modalProductName');
+        const pPrice = document.getElementById('modalProductPrice');
+
+        function openModal(name, price) {
+            pName.textContent = name;
+            pPrice.textContent = price;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.getElementById('orderForm').reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Handle form submission (Simulated)
+        function submitOrder(e) {
+            e.preventDefault();
+            // In a real website, this would send data to a server or email.
+            alert("Porosia u pranua me sukses! Postieri do t'ju kontaktojë së shpejti.");
+            closeModal();
+        }
+    </script>
 </body>
 </html>
