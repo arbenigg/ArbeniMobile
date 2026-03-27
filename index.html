@@ -632,6 +632,26 @@
         const pName = document.getElementById('modalProductName');
         const pPrice = document.getElementById('modalProductPrice');
 
+                   // Funksioni për filtrimin e katalogut
+        function filterCatalog(brand, button) {
+            // Heq klasën 'active' nga të gjithë butonat
+            let buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Shton klasën 'active' te butoni i klikuar
+            button.classList.add('active');
+
+            // Fsheh ose shfaq produktet bazuar në markën (brand)
+            let products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (brand === 'te-gjitha' || product.getAttribute('data-brand') === brand) {
+                    product.style.display = 'flex'; // E shfaq
+                } else {
+                    product.style.display = 'none'; // E fsheh
+                }
+            });
+        }
+
         function openModal(name, price) {
             pName.textContent = name;
             pPrice.textContent = price;
