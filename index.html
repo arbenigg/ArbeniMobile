@@ -496,75 +496,72 @@
         </section>
     </div>
 
-    <section id="katalogu">
-        <h2 class="section-title">Aksesorët e preferuar.</h2>
+        <section id="katalogu">
+        <h2 class="section-title">Aksesorët sipas markës.</h2>
 
-        <h3 class="category-title">Apple Premium</h3>
-        <div class="catalog-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=80" alt="Apple 35W" class="product-image">
-                <div class="product-brand">Apple</div>
-                <h4 class="product-title">Power Adapter 35W Dual USB-C</h4>
-                <p class="product-desc">Karikoni dy pajisje njëkohësisht me shpejtësi maksimale. Origjinal dhe i sigurt.</p>
-                <div class="product-price">35.00€</div>
-                <button class="btn" onclick="openModal('Power Adapter 35W Dual USB-C', '35.00€')">Blej Tani</button>
-                <div class="payment-info">✓ Pagesë në dorëzim</div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e92b?auto=format&fit=crop&w=500&q=80" alt="Apple EarPods" class="product-image">
-                <div class="product-brand">Apple</div>
-                <h4 class="product-title">EarPods (USB-C & Lightning)</h4>
-                <p class="product-desc">Kualitet i jashtëzakonshëm audio me mikrofon të integruar për thirrje të qarta.</p>
-                <div class="product-price">19.99€</div>
-                <button class="btn" onclick="openModal('EarPods (USB-C/Lightning)', '19.99€')">Blej Tani</button>
-                <div class="payment-info">✓ Pagesë në dorëzim</div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1615526647209-66dfb3585090?auto=format&fit=crop&w=500&q=80" alt="Apple Cables" class="product-image">
-                <div class="product-brand">Apple</div>
-                <h4 class="product-title">Kabllo USB-C 2m (240W)</h4>
-                <p class="product-desc">Kabllo super e qëndrueshme e thurur. E përkryer për iPhone 15, iPad dhe Mac.</p>
-                <div class="product-price">24.99€</div>
-                <button class="btn" onclick="openModal('Kabllo USB-C 2m (240W)', '24.99€')">Blej Tani</button>
-                <div class="payment-info">✓ Pagesë në dorëzim</div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1628126235206-5260b9ea6441?auto=format&fit=crop&w=500&q=80" alt="Apple Battery" class="product-image">
-                <div class="product-brand">Apple</div>
-                <h4 class="product-title">MagSafe Battery Pack</h4>
-                <p class="product-desc">Bateri 5000mAh që ngjitet me magnet. Praktike dhe e lehtë për udhëtime.</p>
-                <div class="product-price">14.99€</div>
-                <button class="btn" onclick="openModal('MagSafe Battery Pack 5000mAh', '14.99€')">Blej Tani</button>
-                <div class="payment-info">✓ Pagesë në dorëzim</div>
-            </div>
+        <div class="brand-tabs">
+            <button class="tab-btn active" onclick="filterCatalog('te-gjitha', this)">Të Gjitha</button>
+            <button class="tab-btn" onclick="filterCatalog('apple', this)">Apple</button>
+            <button class="tab-btn" onclick="filterCatalog('samsung', this)">Samsung</button>
+            <button class="tab-btn" onclick="filterCatalog('xiaomi', this)">Xiaomi</button>
+            <button class="tab-btn" onclick="filterCatalog('huawei', this)">Huawei</button>
         </div>
 
-        <h3 class="category-title">Samsung Galaxy</h3>
-        <div class="catalog-grid">
-            <div class="product-card">
+        <div class="catalog-grid" id="productGrid">
+            
+            <div class="product-card" data-brand="apple">
+                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=80" alt="Apple 35W" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">Power Adapter 35W Dual</h4>
+                <p class="product-desc">Karikoni dy pajisje njëkohësisht me shpejtësi maksimale.</p>
+                <div class="product-price">35.00€</div>
+                <button class="btn" onclick="openModal('Power Adapter 35W Dual', '35.00€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
+            <div class="product-card" data-brand="apple">
+                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e92b?auto=format&fit=crop&w=500&q=80" alt="Apple EarPods" class="product-image">
+                <div class="product-brand">Apple</div>
+                <h4 class="product-title">EarPods (USB-C/Lightning)</h4>
+                <p class="product-desc">Kualitet i jashtëzakonshëm audio me mikrofon të integruar.</p>
+                <div class="product-price">19.99€</div>
+                <button class="btn" onclick="openModal('EarPods', '19.99€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
+            <div class="product-card" data-brand="samsung">
                 <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=500&q=80" alt="Samsung Adapter" class="product-image">
                 <div class="product-brand">Samsung</div>
                 <h4 class="product-title">Super Fast Charger 25W</h4>
                 <p class="product-desc">Karikues origjinal Samsung për mbushje të shpejtë të serisë Galaxy.</p>
                 <div class="product-price">19.99€</div>
-                <button class="btn" onclick="openModal('Samsung Super Fast Charger 25W', '19.99€')">Blej Tani</button>
+                <button class="btn" onclick="openModal('Samsung Charger 25W', '19.99€')">Blej Tani</button>
                 <div class="payment-info">✓ Pagesë në dorëzim</div>
             </div>
 
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=500&q=80" alt="Samsung Powerbank" class="product-image">
-                <div class="product-brand">Samsung</div>
-                <h4 class="product-title">Powerbank 20000mAh</h4>
-                <p class="product-desc">Kapacitet masiv për ditët e gjata. Përfshin suport për Super Fast Charging.</p>
-                <div class="product-price">49.99€</div>
-                <button class="btn" onclick="openModal('Samsung Powerbank 20000mAh', '49.99€')">Blej Tani</button>
+            <div class="product-card" data-brand="xiaomi">
+                <img src="https://images.unsplash.com/photo-1628234857640-3bd8e08d1326?auto=format&fit=crop&w=500&q=80" alt="Xiaomi Buds" class="product-image">
+                <div class="product-brand">Xiaomi</div>
+                <h4 class="product-title">Redmi Buds 4 Pro</h4>
+                <p class="product-desc">Kufje Wireless me anulim aktiv të zhurmës (ANC) dhe bateri afatgjatë.</p>
+                <div class="product-price">45.00€</div>
+                <button class="btn" onclick="openModal('Redmi Buds 4 Pro', '45.00€')">Blej Tani</button>
                 <div class="payment-info">✓ Pagesë në dorëzim</div>
             </div>
+
+            <div class="product-card" data-brand="huawei">
+                <img src="https://images.unsplash.com/photo-1631281021437-010e6a928ba5?auto=format&fit=crop&w=500&q=80" alt="Huawei Charger" class="product-image">
+                <div class="product-brand">Huawei</div>
+                <h4 class="product-title">SuperCharge Adapter 40W</h4>
+                <p class="product-desc">Teknologjia e mbushjes super të shpejtë për pajisjet tuaja Huawei.</p>
+                <div class="product-price">29.00€</div>
+                <button class="btn" onclick="openModal('Huawei SuperCharge 40W', '29.00€')">Blej Tani</button>
+                <div class="payment-info">✓ Pagesë në dorëzim</div>
+            </div>
+
         </div>
     </section>
+
 
     <div id="checkoutModal" class="modal-overlay">
         <div class="modal-content">
